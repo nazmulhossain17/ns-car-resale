@@ -1,0 +1,27 @@
+.home{
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    background: url('https://www.hdcarwallpapers.com/walls/bugatti_chiron_super_sport_vague_de_lumiere_2022_4k_2-HD.jpg');
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: cover;
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.text h1{
+    font-size: 3.5rem;
+    letter-spacing: 2px;
+}
+
+.text span{
+    color: orange;
+}
+
+.text p{
+    margin: 00.5rem 0 1;
+
+}
+

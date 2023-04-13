@@ -9,7 +9,7 @@ const Navbar = () => {
           const toggleSidebar = () => setShowSidebar(!showSidebar);
         
           return (
-            <header className="bg-white shadow-lg">
+            <header className="bg-gray-100 shadow-lg">
   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div className="flex items-center justify-between h-20">
       <div className="flex-shrink-4">
@@ -54,7 +54,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className="flex items-center">
-        <button className="text-gray-800 hover:text-gray-900 px-5 py-2  text-xl font-medium bg-green-600 rounded-full">
+        <button className="text-white hover:text-gray-900 px-5 py-2  text-xl font-medium bg-green-600 rounded-full">
           Sign In
         </button>
         <div className="-mr-2 flex md:hidden">
