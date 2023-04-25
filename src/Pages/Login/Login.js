@@ -1,12 +1,20 @@
 import React from 'react';
+import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
 const Login = () => {
+
+    const { register, formState: { errors }, handleSubmit } = useForm();
+
+    const handleLogin = data =>{
+        console.log(data)
+
+    }
     return (
-        <div class="lg:flex">
-            <div class="lg:w-1/2 xl:max-w-screen-sm">
-                <div class="py-12 bg-indigo-100 lg:bg-white flex justify-center lg:justify-start lg:px-12">
-                    <div class="cursor-pointer flex items-center">
+        <div className="lg:flex">
+            <div className="lg:w-1/2 xl:max-w-screen-sm">
+                <div className="py-12 bg-indigo-100 lg:bg-white flex justify-center lg:justify-start lg:px-12">
+                    <div className="cursor-pointer flex items-center">
                         <div>
                         <svg className="w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" viewBox="0 0 225 225" style={{ enableBackground: 'new 0 0 225 225' }} xmlSpace="preserve">
   <style type="text/css">{`.st0{fill:none;stroke:currentColor;stroke-width:20;stroke-linecap:round;stroke-miterlimit:3;}`}</style>
@@ -17,49 +25,51 @@ const Login = () => {
   </g>
 </svg>
                         </div>
-                        <div class="text-2xl text-indigo-800 tracking-wide ml-2 font-semibold">NS-CAR_RESALE</div>
+                        <div className="text-2xl text-indigo-800 tracking-wide ml-2 font-semibold">NS-CAR_RESALE</div>
                     </div>
                 </div>
-                <div class="mt-10 px-12 sm:px-24 md:px-48 lg:px-12 lg:mt-16 xl:px-24 xl:max-w-2xl">
-                    <h2 class="text-center text-4xl text-indigo-900 font-display font-semibold lg:text-left xl:text-5xl
+                <div className="mt-10 px-12 sm:px-24 md:px-48 lg:px-12 lg:mt-16 xl:px-24 xl:max-w-2xl">
+                    <h2 className="text-center text-4xl text-indigo-900 font-display font-semibold lg:text-left xl:text-5xl
                     xl:text-bold">Sign in</h2>
-                    <div class="mt-12">
-                        <form>
+                    <div className="mt-12">
+                        <form onSubmit={handleSubmit(handleLogin)}>
                             <div>
-                                <div class="text-sm font-bold text-gray-700 tracking-wide">Email Address</div>
-                                <input class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" type="" placeholder="mike@gmail.com"/>
+                                <div className="text-sm font-bold text-gray-700 tracking-wide">Email Address</div>
+                                <input {...register("mail", { required: "Email Address is required" })} aria-invalid={errors.mail ? "true" : "false"}  className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" type='email' placeholder="example@gmail.com"/>
+                                {errors.mail && <p className='text-red-600' role="alert">{errors.mail?.message}</p>}
                             </div>
-                            <div class="mt-8">
-                                <div class="flex justify-between items-center">
-                                    <div class="text-sm font-bold text-gray-700 tracking-wide">
+                            <div className="mt-8">
+                                <div className="flex justify-between items-center">
+                                    <div className="text-sm font-bold text-gray-700 tracking-wide">
                                         Password
                                     </div>
                                     <div>
-                                        <a class="text-xs font-display font-semibold text-indigo-600 hover:text-indigo-800
+                                        <Link to='' className="text-xs font-display font-semibold text-indigo-600 hover:text-indigo-800
                                         cursor-pointer">
                                             Forgot Password?
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
-                                <input class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" type="" placeholder="Enter your password"/>
+                                <input {...register("password", { required: "Password is required" })} aria-invalid={errors.password ? "true" : "false"}  className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" type='password'  placeholder="Enter your password"/>
+                                {errors.password && <p className='text-red-500' role="alert">{errors.password?.message}</p>}
                             </div>
-                            <div class="mt-10">
-                                <button class="bg-green-500 text-gray-100 p-4 w-full rounded-full tracking-wide
+                            <div className="mt-10">
+                                <button className="bg-green-500 text-gray-100 p-4 w-full rounded-full tracking-wide
                                 font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-green-600
                                 shadow-lg">
                                     Sign In
                                 </button>
                             </div>
                         </form>
-                        <div class="mt-12 text-sm font-display font-semibold text-gray-700 text-center">
-                            Don't have an account ? <Link to='/register' class="cursor-pointer text-indigo-600 hover:text-indigo-800">Sign up</Link>
+                        <div className="mt-12 text-sm font-display font-semibold text-gray-700 text-center">
+                            Don't have an account ? <Link to='/register' className="cursor-pointer text-indigo-600 hover:text-indigo-800">Sign up</Link>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="hidden lg:flex items-center justify-center bg-indigo-100 flex-1 h-screen">
-                <div class="max-w-xs transform duration-200 hover:scale-110 cursor-pointer">
-                    <svg class="w-5/6 mx-auto" xmlns="http://www.w3.org/2000/svg" id="f080dbb7-9b2b-439b-a118-60b91c514f72" data-name="Layer 1" viewBox="0 0 528.71721 699.76785">
+            <div className="hidden lg:flex items-center justify-center bg-indigo-100 flex-1 h-screen">
+                <div className="max-w-xs transform duration-200 hover:scale-110 cursor-pointer">
+                    <svg className="w-5/6 mx-auto" xmlns="http://www.w3.org/2000/svg" id="f080dbb7-9b2b-439b-a118-60b91c514f72" data-name="Layer 1" viewBox="0 0 528.71721 699.76785">
                         <title>Login</title>
                         <rect y="17.06342" width="444" height="657" fill="#535461"/>
                         <polygon points="323 691.063 0 674.063 0 17.063 323 0.063 323 691.063" fill="#7f9cf5"/>
