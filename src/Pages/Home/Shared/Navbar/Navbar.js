@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import logo from '../../../../assets/logos.png'
 import ferrari from '../../../../assets/slider_1.png'
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
    
@@ -17,45 +18,36 @@ const Navbar = () => {
       </div>
       <div className="hidden md:block">
         <div className="ml-10 flex items-baseline space-x-4">
-          <a
-            href="#"
+          <Link
+            to="/"
             className="text-gray-800 hover:text-gray-900 px-3 py-2 rounded-md text-xl font-medium"
           >
             Home
-          </a>
+          </Link>
 
-          <a
-            href="#"
+          <Link
+            to="/cars"
             className="text-gray-800 hover:text-gray-900 px-3 py-2 rounded-md text-xl font-medium"
           >
-            About
-          </a>
+            Cars
+          </Link>
 
-          <a
-            href="#"
+          <Link to="/about" className="text-gray-800 hover:text-gray-900 px-3 py-2 rounded-md text-xl font-medium">About</Link>
+
+          <Link
+            to="/blogs"
             className="text-gray-800 hover:text-gray-900 px-3 py-2 rounded-md text-xl font-medium"
           >
-            Why Choose Us
-          </a>
+            Blogs
+          </Link>
 
-          <a
-            href="#"
-            className="text-gray-800 hover:text-gray-900 px-3 py-2 rounded-md text-xl font-medium"
-          >
-            Testimonial
-          </a>
+          <Link to="/contact" className="text-gray-800 hover:text-gray-900 px-3 py-2 rounded-md text-xl font-medium">Contact</Link>
 
-          <a
-            href="#"
-            className="text-gray-800 hover:text-gray-900 px-3 py-2 rounded-md text-xl font-medium"
-          >
-            Contact
-          </a>
         </div>
       </div>
       <div className="flex items-center">
         <button className="text-white hover:text-gray-900 px-5 py-2  text-xl font-medium bg-green-600 rounded-full">
-          Sign In
+          <Link to='/login'>Sign In</Link>
         </button>
         <div className="-mr-2 flex md:hidden">
           <button
