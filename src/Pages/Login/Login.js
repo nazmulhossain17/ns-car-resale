@@ -1,13 +1,26 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 
 const Login = () => {
 
     const { register, formState: { errors }, handleSubmit } = useForm();
+    const {login} = useContext(AuthContext)
+    const [loginError, setLoginError] = useState('');
 
     const handleLogin = data =>{
         console.log(data)
+        setLoginError('')
+        login(data.email, data.password)
+        .then(result => {
+            const user = result.user;
+            console.log(user)
+        })
+        .catch(error =>{
+            console.log(error)
+            setLoginError(error.message);
+        })
 
     }
     return (
@@ -35,8 +48,8 @@ const Login = () => {
                         <form onSubmit={handleSubmit(handleLogin)}>
                             <div>
                                 <div className="text-sm font-bold text-gray-700 tracking-wide">Email Address</div>
-                                <input {...register("mail", { required: "Email Address is required" })} aria-invalid={errors.mail ? "true" : "false"}  className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" type='email' placeholder="example@gmail.com"/>
-                                {errors.mail && <p className='text-red-600' role="alert">{errors.mail?.message}</p>}
+                                <input {...register("email", { required: "Email Address is required" })} aria-invalid={errors.email ? "true" : "false"}  className="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500" type='email' placeholder="example@gmail.com"/>
+                                {errors.email && <p className='text-red-600' role="alert">{errors.email?.message}</p>}
                             </div>
                             <div className="mt-8">
                                 <div className="flex justify-between items-center">
@@ -60,6 +73,9 @@ const Login = () => {
                                     Sign In
                                 </button>
                             </div>
+                            <div>
+                        {loginError && <p className='text-red-600'>{loginError}</p>}
+                    </div>
                         </form>
                         <div className="mt-12 text-sm font-display font-semibold text-gray-700 text-center">
                             Don't have an account ? <Link to='/register' className="cursor-pointer text-indigo-600 hover:text-indigo-800">Sign up</Link>
